@@ -1,0 +1,129 @@
+﻿@{
+    ViewData["Title"] = "PaymentCheckout";
+}
+<div class="box5">
+
+<h1 class="header-About">Payment Checkout</h1>
+</br>
+<body>
+
+   
+    <form action="PaymentCheckout" method="post" >
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            Please enter your first name:
+                        </td>
+                        
+                        <td>
+                            Please enter your last name:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="Name" placeholder="First Name" required />
+                        </td>
+                        <td>
+                            <input type="text" name="Surname" placeholder="Last Name" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Enter your email:
+                        </td>
+
+                        <td>
+                            Enter your mobile number:
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="Email" placeholder="Email" required />
+                        </td>
+                        <td>
+                            <input type="text" name="mobileNum" placeholder="Mobile Number" required />
+                        </td>
+                        <td>
+                            <img src="~/Images/KhumaloCraft Emporium logo.png" class="logo-Img" alt="KhumaloCraft Emporium logo" />
+
+                        </td>
+                    </tr>
+            </table>
+            
+            <br />
+            <table>
+                    <tr>
+                        <td>
+                            Enter your house number:
+                        </td>
+
+                        <td>
+                            Enter your street name:
+                        </td>
+
+                        <td>
+                            Enter your postal code:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="houseNum" placeholder="House Number" required />
+                        </td>
+                        <td>
+                            <input type="text" name="streetName" placeholder="Street Name" required />
+                        </td>
+                        <td>
+                            <input type="text" name="postalCode" placeholder="Postal Code" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Enter your country:
+                        </td>
+                        <td>
+                            Enter your province/state:
+                        </td>
+                        <td>
+                            Enter your city:
+                        </td>
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="country" placeholder="Country" required />
+                        </td>
+                        <td>
+                            <input type="text" name="provinceState" placeholder="Province/State" required />
+                        </td>
+                        <td>
+                            <input type="text" name="city" placeholder="City" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Enter your card number:
+                        </td>
+                        <td>
+                            Enter your CVV:
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="CardNum" placeholder="Card Number" required />
+                        </td>
+                        <td>
+                            <input type="text" name="CVV" placeholder="City" required />
+                        </td>
+                    </tr>
+            </table>
+            <div class="webpageButtons">
+                <button type="submit">Place order</button>
+            </div>
+           
+    </form>
+    
+</body>
+</div>
