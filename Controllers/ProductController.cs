@@ -11,7 +11,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         public ActionResult insert(ProductTable products)
         {
             var result2 = prodtbl.insert_product(products);
-            return RedirectToAction("Products", "Home");
+            return RedirectToAction("MyWork", "Home");
         }
 
         [HttpGet]

@@ -34,9 +34,9 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         public ActionResult PlaceOrder(int userID, int ProductID, int price)
         {
             try
-            {
-                var ConString = "Server=tcp:clouddev-sql-server101.database.windows.net,1433;Initial Catalog=clod-sql-DB;Persist Security Info=False;User ID=Kashvir;Password=BrunoCorral1234#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-                Console.WriteLine(userID);
+            {var ConString = "Server=tcp:cloud-dev-poe.database.windows.net,1433;Initial Catalog=cloud-dev-poe-sql-database;Persist Security Info=False;User ID=Erin;Password=J@ckEr!n2003;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+
+             Console.WriteLine(userID);
                 Console.WriteLine(ProductID);
                 var con = new SqlConnection(ConString);
                 var sql =

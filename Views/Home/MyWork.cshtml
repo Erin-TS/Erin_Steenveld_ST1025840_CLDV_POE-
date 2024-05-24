@@ -1,214 +1,42 @@
-﻿@{
+﻿@using ST10258400_Erin_CLDV_POE.Models
+
+@model int
+
+@{
     ViewData["Title"] = "My Work";
+    var userId = ViewData["userID"];
+    var products = ViewData["Products"] as List<ProductTable>;
 }
+
 <div class="box6">
-    <h1 class="header-About" >
+    <h1 class="header-About">
         My Work
     </h1>
     <p>Explore the creative works of talented artisans from around the world.</p>
-<div class="my-work-container">
-   
-    <div class="work-grid">
-        <div class="work-item">
-            <img src="~/Images/cow.png" alt="Cow">
-            <h4>Cow</h4>
-            <p>Item Description: Hand crafted crochet cow. Measures 22cm x 16cm. Made with black and white acrylic wool. </p>
-            <p>Price: R 250</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <img src="~/Images/purple cow.png" alt="Purple Cow">
-            <h4>Purple cow</h4>
-            <p>Item Description: Hand crafted crochet cow. Measures 22cm x 16cm. Made with purple and turquoise acrylic wool.</p>
-            <p>Price: R 250</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <img src="~/Images/baloon dog.png" alt="Ballon dog">
-            <h4>Balloon dog</h4>
-            <p>Item Description: Hand crafted crochet balloon dog. Measures 25cm x 18cm. Made with orange acrylic wool.</p>
-            <p>Price: R 200</p>
-            <button>Add to Cart</button>
-        </div>
+    <div class="my-work-container">
+        
+            @for (int i = 0; i < products.Count; i += 3)
+            {
+            <div class="work-grid">
+                    @for (int j = i; j < Math.Min(i + 3, products.Count); j++)
+                    {
+                        <div class="work-item">
+                            <img src="~/@products[j].ImagePath" alt="@products[j].ProductName">
+                            <h4>@products[j].ProductName</h4>
+                            <p>Item Description: @products[j].Description</p>
+                            <p>Category: @products[j].Category</p>
+                            <p>Price: R @products[j].Price</p>
+                            <form asp-controller="Transaction" class="product-form" asp-action="PlaceOrder" method="post">
+                                <input type="hidden" name="userID" value="@userId" />
+                                <input type="hidden" name="product" value="@products[j].ProductID" />
+                                <input type="hidden" name="Price" value="@products[j].Price" />
+                                <button>Add to Cart</button>
+                            </form>
+                        </div>
+                    }
+                </div>
+            }
+        
     </div>
-
-    <div class="work-grid">
-        <div class="work-item">
-            <img src="~/Images/christmas.png" alt="Christmas">
-            <h4>Christmas car hanging</h4>
-            <p>Item Description: Hand crafted crochet mini christmas tree 8cm tall with a small star. Made from green, brown and yellow acrylic wool. 5 mini christmas lights various colours. hanging sting is 60cm long in a red and white stripe.</p>
-            <p>Price: R 100</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <img src="~/Images/duck.png" alt="Duck">
-            <h4>Duck</h4>
-            <p>Item Description : Hand crafted crochet mini crochet duck made from yellow acrylic wool. Measures 7cm.</p>
-            <p>Price: R 50</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <img src="~/Images/flowers.png" alt="Flowers">
-            <h4>Flowers</h4>
-            <p>Item Description: Hand crafted crochet tulip flowers. Pack of 2 flowers , colours of flower may vary.Made from green , pink and purple acrylic wool with a wire stem.</p>
-            <p>Price: R 50</p>
-            <button>Add to Cart</button>
-        </div>
-    </div>
-
-    <div class="work-grid">
-        <div class="work-item">
-            <div class="change-pic">
-                <img src="~/Images/bee.png" alt="HS tote">
-                <img src="~/Images/bee 2.png" alt="Bee">
-            </div>
-            <h4>Bee</h4>
-            <p>Item Description: Hand crafted bee. Made with yellow and black acrylic wool. Measures 12cm x 10cm. </p>
-            <p>Price: R 150</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <div class="change-pic">
-                <img src="~/Images/cardigan 2.png" alt="Cardigan">
-                <img src="~/Images/cardigan 3.png" alt="Cardigan">
-            </div>
-            <h4>Hexagon Crochet cardigan</h4>
-            <p>Item Description: Hand crafted crochet hexagon cardigan. Made with vergated pink grey and blue wool. Size xl.</p>
-            <p>Price: R 2 500</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <div class="change-pic">
-
-                <img src="~/Images/dino2.png" alt="img2">
-                <img src="~/Images/dino3.png" alt="img2">
-
-            </div>
-            <h4>Dinosaur</h4>
-            <p>Item Description: Hand crafted mini dinosaur. Measures 17cm x10cm. Made with darrk green ,blue and white acrylic wool.</p>
-            <p>Price: R 600</p>
-            <button>Add to Cart</button>
-        </div>
-    </div>
-
-    <div class="work-grid">
-        <div class="work-item">
-            <div class="change-pic">
-
-                <img src="~/Images/harry tote side 1.png" alt="HS tote">
-                <img src="~/Images/harry tote side 2.png" alt="HS tote">
-            </div>
-            <h4>Harry Styles tote bag </h4>
-            <p>
-                Item Description: Hand crafted crochet harry stles themed crochet tote bag. Made up of themes granny squares each relating to a song. Bag measures 32cm x 40cm, 25cm handle. Bag is lined.
-            </p>
-            <p>Price: R 1 800</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <img src="~/Images/hat.png" alt="Hat">
-            <h4>Hat</h4>
-            <p>Item Description: hand crafted kyle form south park hat. It is made from bright green acrylic wool. Size M/L.</p>
-            <p>Price: R 400</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <div class="change-pic">
-                <img src="~/Images/hs cardigan 2.png" alt="Hs cardigan">
-                <img src="~/Images/hs cardigan 3.png" alt="Hs cardigan">
-
-            </div>
-            <h4>Harry Styles patchwork cardigan</h4>
-            <p>Item Description: hand crafted patchwork cardigan made of more than 60 squares all diffrent stiches. the cardigan is made from a range of colours and is made to be oversize. The cardigan size xl.</p>
-            <p>Price: R 3000</p>
-            <button>Add to Cart</button>
-        </div>
-    </div>
-
-    <div class="work-grid">
-        <div class="work-item">
-            <img src="~/Images/koala.png" alt="Koala">
-            <h4>Koala</h4>
-            <p>Item Description: Hand crafted koala. Made from grey acrylic wool. Measures 14cm x 9cm.</p>
-            <p>Price: R 150</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <img src="~/Images/moon and saturn.png" alt="moon and saturn">
-            <h4>Moon and saturn car hanging </h4>
-            <p>Item Description: Hand craft moon and saturn car hanging. Themed after the taylor swift lyrics. Moon 5 cm and saturn 5cm. The hanging string 60cm long.</p>
-            <p>Price: R 100</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <img src="~/Images/pineapple.png" alt="Pineapple">
-            <h4>Pineapple</h4>
-            <p>Item Description: Hand crafted pinaple made from acrylic wool , Measures 15cm x 11 cm.</p>
-            <p>Price: R 200</p>
-            <button>Add to Cart</button>
-        </div>
-    </div>
-
-
-    <div class="work-grid">
-        <div class="work-item">
-            <img src="~/Images/suswarti.png" alt="Suswariti">
-            <h4>Suswariti car hanging</h4>
-            <p>Item Description: Hand crafted based off the dust sprit from an annime. Made from acrylic black wool.</p>
-            <p>Price: R 70</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <img src="~/Images/swinging duck.png" alt="swinging Duck">
-            <h4>Swinging duck</h4>
-            <p>Item Description: Hand crafted swinging duck car hanging. Made from brown, pink and yellow acrylic wool.Measurement of dog is 5cm and hanging sting is 60 cm. </p>
-            <p>Price:R 100</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <div class="change-pic">
-                <img src="~/Images/turtle 1.png" alt="Turtle">
-                <img src="~/Images/turtle 2.png" alt="Turtle">
-            </div>
-            <h4>Turtle</h4>
-            <p>Item Description: Hand crafted turtule. Made from green and brown wool. Measures 18cm x18xm.</p>
-            <p>Price: R250 </p>
-            <button>Add to Cart</button>
-        </div>
-    </div>
-
-    <div class="work-grid">
-        <div class="work-item">
-            <img src="~/Images/Cross stich.jpeg" alt="Cross stich">
-            <h4>Cross stich flower pot</h4>
-            <p>Item Description: Hand stichet cross stiched of flower pot. Comes in the ring to keep piece taught.</p>
-            <p>Price: R 600</p>
-            <button>Add to Cart</button>
-        </div>
-
-        <div class="work-item">
-            <img src="~/Images/giraffe.jpeg" alt="Giraffe">
-            <h4>Giraffe</h4>
-            <p>Item Description: Hand crafted crochet giraffe. Made from  brown, yellow and white. Measures to 25cm x 16cm. </p>
-            <p>Price: R 250</p>
-            <button>Add to Cart</button>
-        </div>
-    </div>
-    
-       </br>
-        <h3 class="header-coming-soon"> More artisans and thier works coming soon!</h3>
-    
-</> 
+    <h3 class="header-coming-soon">More artisans and thier works coming soon!</h3>
 </div>

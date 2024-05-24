@@ -6,7 +6,7 @@ namespace ST10258400_Erin_CLDV_POE.Models
     public class Transactions
     {
         public static string ConString = "Server=tcp:cloud-dev-poe.database.windows.net,1433;Initial Catalog=cloud-dev-poe-sql-database;Persist Security Info=False;User ID=Erin;Password=J@ckEr!n2003;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
-
+       
         public static SqlConnection Con = new(ConString);
 
         public int TransactionId { get; set; }

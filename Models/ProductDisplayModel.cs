@@ -9,6 +9,7 @@ namespace ST10258400_Erin_CLDV_POE.Models
         public decimal Price { get; set; }
         public string Description { get; set; }
         public bool QuantityInStock { get; set; }
-    
-}
+        public string ImagePath { get; set; }
+        public string Category { get; set; }
+    }
 }

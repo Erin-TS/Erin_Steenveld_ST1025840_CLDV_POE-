@@ -13,7 +13,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         public ActionResult Privacy(UserTable Users)
         {
             var result = usrtbl.insert_User(Users);
-            return RedirectToAction("Privacya", "Home");
+            return RedirectToAction("MyWork", "Home");
         }
 
         [HttpGet]

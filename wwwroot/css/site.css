@@ -192,11 +192,14 @@ nav ul li a {
     margin: auto;
     border: 2px solid pink;
     padding-top: 10px;
+    padding-left: 0; /* Remove left padding */
+    padding-right: 0; /* Remove right padding */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: white;
 }
+
 .box7 {
     width: 98%;
     height: auto;
@@ -444,10 +447,19 @@ nav ul li a {
             background-color: #f2f2f2;
         }
 
+
 .work-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+}
+/* Custom styles for navbar text size */
+.navbar-nav .nav-link {
+    font-size: 16px; /* Adjust this value as needed */
+}
+
+.navbar-brand {
+    font-size: 16px; /* Adjust this value as needed */
 }
 
 .work-item {
@@ -473,6 +485,7 @@ nav ul li a {
         .work-item button:hover {
             background-color: #6a006a;
         }
+
 
 .change-pic img:last-child {
     display: none;
@@ -579,7 +592,7 @@ nav ul li a {
     background-color: lightpink;
     width: 90%;
     height: 3px;
-       border-top: 5px black;
+    border-top: 5px black;
     line-height: 80%;
-}
 
+}

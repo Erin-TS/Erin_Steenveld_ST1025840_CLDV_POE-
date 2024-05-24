@@ -26,10 +26,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         {
             return View();
         }
-        public IActionResult MyWork()
-        {
-            return View();
-        }
+     
         public IActionResult Basket()
         {
             return View();
@@ -56,7 +53,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         {
             return View();
         }
-        public IActionResult Products()
+        public IActionResult MyWork()
         {
             var products = ProductTable.GetAllProducts();
             ViewData["Products"] = products;

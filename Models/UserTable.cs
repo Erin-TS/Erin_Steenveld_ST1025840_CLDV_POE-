@@ -9,8 +9,8 @@ namespace ST10258400_Erin_CLDV_POE.Models
         public static SqlConnection Con = new(ConString);
 
 
-        public string UserName { get; set; }
-        public string UserSurname { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
 
 
@@ -18,14 +18,14 @@ namespace ST10258400_Erin_CLDV_POE.Models
         {
             try
             {
-                const string sql = "INSERT INTO userTable (UserName, UserSurname, Email) VALUES (@UserName, @UserSurname, @Email)";
-                //const string sql = "INSERT INTO userTable (userID, userName, userSurname, userEmail) VALUES (@userID, @userName, @userSurname, @userEmail)";
+                const string sql = "INSERT INTO [Users] (UserID,FirstName, LastName, Email) VALUES (@UserID,@FirstName, @LastName, @Email)";
+                //const string sql = "INSERT INTO userTable (userID, FirstName, LastName, userEmail) VALUES (@userID, @FirstName, @LastName, @userEmail)";
                 var cmd = new SqlCommand(sql, Con);
                 var random = new Random();
                 var randomNumber = random.Next(1, 1001);
-                //cmd.Parameters.AddWithValue("@userID", randomNumber);
-                cmd.Parameters.AddWithValue("@UserName", m.UserName);
-                cmd.Parameters.AddWithValue("@userSurname", m.UserSurname);
+                cmd.Parameters.AddWithValue("@UserID", randomNumber);
+                cmd.Parameters.AddWithValue("@FirstName", m.FirstName);
+                cmd.Parameters.AddWithValue("@LastName", m.LastName);
                 cmd.Parameters.AddWithValue("@Email", m.Email);
                 Con.Open();
                 var rowsAffected = cmd.ExecuteNonQuery();
