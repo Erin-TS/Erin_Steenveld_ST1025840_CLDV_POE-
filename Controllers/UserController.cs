@@ -7,7 +7,6 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
     {
         public UserTable usrtbl = new UserTable();
 
-       
 
         [HttpPost]
         public ActionResult Privacy(UserTable Users)
@@ -15,6 +14,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
             var result = usrtbl.insert_User(Users);
             return RedirectToAction("MyWork", "Home");
         }
+
 
         [HttpGet]
         public ActionResult Privacy()

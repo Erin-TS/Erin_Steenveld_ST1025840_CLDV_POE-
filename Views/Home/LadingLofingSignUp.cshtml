@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "LadingLofingSignUp";
+}
+
+<div class="box1">
+    <img src="~/Images/KhumaloCraft Emporium logo.png" class="logo-Img" alt="KhumaloCraft Emporium logo" />
+
+    <h1 class="header-About">
+        Please Sign Up or Login to your account
+    </h1>
+    <div class="text-center">
+        
+        <p>
+            If you do not already have an account, you may register a new account here:          
+        <div class="webpageButtons">
+            <a asp-controller="User" asp-action="SignUp">
+                <button>Sign Up</button>
+            </a>
+        </div>
+      </p>
+
+        <p class ="text-center">
+            If you already have an account, you may login here: 
+        <div class="webpageButtons">
+            <a asp-action="Login">
+                <button>Login</button>
+            </a>
+        </div>
+        </p>
+    </div>
+</div>

@@ -26,11 +26,12 @@
                             <p>Item Description: @products[j].Description</p>
                             <p>Category: @products[j].Category</p>
                             <p>Price: R @products[j].Price</p>
-                            <form asp-controller="Transaction" class="product-form" asp-action="PlaceOrder" method="post">
-                                <input type="hidden" name="userID" value="@userId" />
-                                <input type="hidden" name="product" value="@products[j].ProductID" />
-                                <input type="hidden" name="Price" value="@products[j].Price" />
-                                <button>Add to Cart</button>
+                        <form asp-controller="MyWork" asp-action="AddToCart" method="post">
+                            <input type="hidden" name="productId" value="@products[j].ProductID" />
+                            <input type="hidden" name="productName" value="@products[j].ProductName" />
+                            <input type="hidden" name="Price" value="@products[j].Price" />
+                            <input type="number" name="quantity" value="1" /> 
+                            <button type="submit">Add to Cart</button>
                             </form>
                         </div>
                     }

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using ST10258400_Erin_CLDV_POE.Models;
 using System.Diagnostics;
 
@@ -44,7 +45,10 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
             return View();
         }
       
-      
+      public IActionResult LadingLofingSignUp()
+        {
+            return View();
+        }
         public IActionResult Orders()
         {
             return View();

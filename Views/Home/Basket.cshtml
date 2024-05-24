@@ -1,61 +1,28 @@
-﻿
-@{
-    ViewData["Title"] = "Basket";
-}
-<div class="box4">
+﻿@model List<BasketItem>
 
-    <h1 class="header-About">
-        Basket
-    </h1>
-   
+<h1>Basket</h1>
+
+@if (Model.Count == 0)
+{
+    <p>Your basket is empty.</p>
+}
+else
+{
     <table>
         <thead>
             <tr>
                 <th>Product</th>
                 <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
-           
-            <tr>
-                <td>Balloon dog</td>
-                <td>2</td>
-                <td>R 200</td>
-                <td>R 400</td>
-                <td>
-                    <div class="webpageButtons">
-                    <button>Remove</button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Flowers</td>
-        <td>1</td>
-        <td>R 50</td>
-        <td>R 50</td>
-        <td>
-            <div class="webpageButtons">
-                <button>Remove</button>
-            </div>
-        </td>
-        </tr>
-            
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductId</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
         </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3">Total:</td>
-                <td>R 450</td>
-                <td></td>
-            </tr>
-        </tfoot>
     </table>
-    <div class="work-item">
-        <a asp-action="PaymentCheckout">
-           
-    <button>Proceed to Checkout</button>
-    </a>
-    </div>
-</div>
+}

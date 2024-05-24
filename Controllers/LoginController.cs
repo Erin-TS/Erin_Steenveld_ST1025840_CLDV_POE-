@@ -16,12 +16,12 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         }
 
 
-        public IActionResult SignUp()
+
+        public IActionResult MyWork()
         {
             return View();
         }
 
-     
         public IActionResult Login()
         {
             return View();
@@ -41,8 +41,8 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
             if (userID != -1)
             {
 
-                //return RedirectToAction("Index", "Home", new { userID = userID });
-                return RedirectToAction("Products", "Home", new { userID = userID });
+                
+                return RedirectToAction("MyWork", "Home", new { userID = userID });
             }
 
 
