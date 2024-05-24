@@ -27,8 +27,8 @@ namespace ST10258400_Erin_CLDV_POE
             app.UseAuthorization();
 
             app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                "default",
+                "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

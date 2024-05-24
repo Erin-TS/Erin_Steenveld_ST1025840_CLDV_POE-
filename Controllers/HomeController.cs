@@ -46,6 +46,27 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         {
             return View();
         }
+      
+      
+        public IActionResult Orders()
+        {
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Products()
+        {
+            var products = ProductTable.GetAllProducts();
+            ViewData["Products"] = products;
+            ViewData["userID"] = 123; // Replace with actual user ID logic
+            return View();
+        }
+        public IActionResult insert()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
