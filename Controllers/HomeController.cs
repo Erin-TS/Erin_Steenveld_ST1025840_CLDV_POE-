@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using ST10258400_Erin_CLDV_POE.Models;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using ST10258400_Erin_CLDV_POE.Models;
 
 namespace ST10258400_Erin_CLDV_POE.Controllers
 {
@@ -70,21 +71,20 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
 
             return View();
         }
+        public IActionResult Orders()
+        {
+            var orders = Transactions.GetAllOrders();
 
+            ViewData["Orders"] = orders;
+            return View();
+        }
 
         public IActionResult LadingLofingSignUp()
         {
             return View();
         }
 
-       /* public IActionResult Orders()
-        {
-            var orders = Transactions.GetAllOrders();
-            ViewData["Orders"] = orders;
-            return View();
-        }*/
-
-
+     
         public IActionResult Insert()
         {
             return View();

@@ -18,14 +18,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         [HttpPost]
         public ActionResult SignUp(UserTable user)
         {
-            // Perform validation
-            if (!ModelState.IsValid)
-            {
-                // Return to the sign-up view with validation errors
-                return View(user);
-            }
-
-            // Insert the user into the database
+                      // Insert the user into the database
             var result = _userTable.insert_User(user);
 
             // Redirect to the appropriate action after sign-up
@@ -35,7 +28,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         [HttpGet]
         public IActionResult SignUp()
         {
-            return View(); // Render the sign-up form
+            return View(_userTable); // Render the sign-up form
         }
     }
 }

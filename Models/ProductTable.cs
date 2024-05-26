@@ -16,31 +16,7 @@ namespace ST10258400_Erin_CLDV_POE.Models
         public string ImagePath { get; set; }
         public string Category { get; set; }
 
-        public static ProductTable GetProductById(int productId)
-        {
-            using (var connection = new SqlConnection(ConString))
-            {
-                connection.Open();
-                var command = new SqlCommand("SELECT * FROM Products WHERE ProductId = @ProductId", connection);
-                command.Parameters.AddWithValue("@ProductId", productId);
-                var reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    return new ProductTable
-                    {
-                        ProductID = (int)reader["ProductId"],
-                        ProductName = reader["ProductName"].ToString(),
-                        Description = reader["Description"].ToString(),
-                        Price = (decimal)reader["Price"],
-                        QuantityInStock = (int)reader["QuantityInStock"],
-                        ImagePath = reader["ImagePath"].ToString(),
-                        Category = reader["Category"].ToString()
-                    };
-                }
-                return null;
-            }
-        }
-
+       
         public int insert_product(ProductTable p)
         {
             try
@@ -48,7 +24,7 @@ namespace ST10258400_Erin_CLDV_POE.Models
                 const string sql = "INSERT INTO Products (ProductID, ProductName, Description, Price, QuantityInStock, ImagePath, Category) VALUES (@ProductID, @ProductName, @Description, @Price, @QuantityInStock, @ImagePath, @Category)";
                 var cmd = new SqlCommand(sql, Con);
                 var random = new Random();
-                var randomNumber = random.Next(100, 10001);
+                var randomNumber = random.Next(100, 137593);
 
                 cmd.Parameters.AddWithValue("@ProductID", randomNumber);
                 cmd.Parameters.AddWithValue("@ProductName", p.ProductName);

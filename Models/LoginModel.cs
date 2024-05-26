@@ -21,11 +21,11 @@ namespace ST10258400_Erin_CLDV_POE.Models
                 var result = cmd.ExecuteScalar();
                 if (result != null && result != DBNull.Value) userId = Convert.ToInt32(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Log the exception or handle it appropriately
                 // For now, rethrow the exception
-                throw;
+                throw ex;
             }
 
             return userId;

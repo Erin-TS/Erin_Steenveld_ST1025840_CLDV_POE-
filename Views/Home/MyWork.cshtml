@@ -21,12 +21,13 @@
                         <p>Item Description: @products[j].Description</p>
                         <p>Category: @products[j].Category</p>
                         <p>Price: R @products[j].Price</p>
-                        <form asp-controller="Transaction" asp-action="AddToBasket" method="post">
-                            <input type="hidden" name="userID" value="@userId" />
-                            <input type="hidden" name="productID" value="@products[j].ProductID" />
+                        <form asp-controller="Transaction" asp-action="PurchaseNow" method="post">
+                            <input type="hidden" name="userId" value="@userId" />
+                            <input type="hidden" name="productId" value="@products[j].ProductID" />
                             <input type="hidden" name="price" value="@products[j].Price" />
                             <button type="submit">Purchase Now</button>
                         </form>
+
                     </div>
                 }
             </div>

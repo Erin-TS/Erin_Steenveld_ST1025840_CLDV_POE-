@@ -1,22 +1,19 @@
-﻿﻿@using CloudDevelopment.Models
-@model int
+﻿@model List<ST10258400_Erin_CLDV_POE.Models.Transactions>
 
 @{
     ViewData["Title"] = "Orders";
-    var orders = ViewData["Orders"] as List<Transactions>;
 }
 
 <div class="text-center">
     <h1>Orders</h1>
     <p>
         Please ensure that orders have been made prior to viewing this page. If the below
-        table is empty, it is highly probable that no orders have yet to be made
+        table is empty, it is highly probable that no orders have yet to be made.
     </p>
 </div>
 
-
 <h2>Order List:</h2>
-<table style="color: white; " class="table">
+<table style="color: white;" class="table">
     <thead>
         <tr>
             <th>TransactionID</th>
@@ -28,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var order in orders)
+        @foreach (var order in Model)
         {
             <tr>
                 <td>@order.TransactionId</td>

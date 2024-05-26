@@ -1,45 +1,46 @@
 ﻿using System.Data.SqlClient;
 
-namespace CloudDevelopment.Models
+namespace ST10258400_Erin_CLDV_POE.Models;
+
+public class Transactions
 {
-    public class Transactions
+    private static string _conString = "Server=tcp:cloud-dev-poe.database.windows.net,1433;Initial Catalog=cloud-dev-poe-sql-database;Persist Security Info=False;User ID=Erin;Password=J@ckEr!n2003;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+    public static SqlConnection Con = new(_conString);
+
+    public int TransactionId { get; set; }
+    public int UserId { get; set; }
+    public int ProductId { get; set; }
+    public DateTime TransactionDate { get; set; }
+    public int Quantity { get; set; }
+    public decimal TotalAmount { get; set; }
+
+
+    // Retrieve orders
+    public static List<Transactions> GetAllOrders()
     {
-        private static string _conString = "Server=tcp:cloud-dev-poe.database.windows.net,1433;Initial Catalog=cloud-dev-poe-sql-database;Persist Security Info=False;User ID=Erin;Password=J@ckEr!n2003;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+        var transactions = new List<Transactions>();
 
-        public int TransactionId { get; set; }
-        public int UserId { get; set; }
-        public int ProductId { get; set; }
-        public DateTime TransactionDate { get; set; }
-        public int Quantity { get; set; }
-        public decimal TotalAmount { get; set; }
+        using var con = new SqlConnection(_conString);
+        const string sql = "SELECT * FROM Transactions";
+        var cmd = new SqlCommand(sql, con);
 
-        // Retrieve orders
-        public static List<Transactions> GetAllOrders()
+        con.Open();
+        var rdr = cmd.ExecuteReader();
+        while (rdr.Read())
         {
-            var transactions = new List<Transactions>();
-            using var con = new SqlConnection(_conString);
-            const string sql = "SELECT * FROM Transactions";
-            var cmd = new SqlCommand(sql, con);
-
-            con.Open();
-            var rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            var transaction = new Transactions
             {
-                var transaction = new Transactions
-                {
-                    TransactionId = Convert.ToInt32(rdr["TransactionID"]),
-                    UserId = Convert.ToInt32(rdr["UserID"]),
-                    ProductId = Convert.ToInt32(rdr["ProductID"]),
-                    TransactionDate = Convert.ToDateTime(rdr["TransactionDate"]),
-                    Quantity = Convert.ToInt32(rdr["Quantity"]),
-                    TotalAmount = Convert.ToDecimal(rdr["TotalAmount"])
-                };
-
-                transactions.Add(transaction);
-            }
-
-            return transactions;
+                TransactionId = Convert.ToInt32(rdr["TransactionID"]),
+                UserId = Convert.ToInt32(rdr["UserID"]),
+                ProductId = Convert.ToInt32(rdr["ProductID"]),
+                TransactionDate = Convert.ToDateTime(rdr["TransactionDate"]),
+                Quantity = Convert.ToInt32(rdr["Quantity"]),
+                TotalAmount = Convert.ToDecimal(rdr["TotalAmount"])
+            };
+            transactions.Add(transaction);
         }
+
+        return transactions;
     }
 }
