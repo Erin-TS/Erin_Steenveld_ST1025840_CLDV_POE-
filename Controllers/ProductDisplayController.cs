@@ -5,15 +5,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
 {
     public class ProductDisplayController : Controller
     {
-        public IActionResult Orders()
-        {
-            return View();
-        }
 
-        public IActionResult MyWork()
-        {
-            return View();
-        }
 
         public IActionResult Index(int userID)
         {

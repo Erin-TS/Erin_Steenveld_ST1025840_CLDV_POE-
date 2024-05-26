@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Transaction Details";
+}
+
+<div class="text-center">
+    <h1>Transaction Successful</h1>
+    <p>
+        Thank you for your purchase! Here are the details of your transaction:
+    </p>
+</div>
+
+<h2>Transaction Details:</h2>
+<table style="color: white;" class="table">
+    <thead>
+        <tr>
+            <th>UserID</th>
+            <th>ProductID</th>
+            <th>TransactionDate</th>
+            <th>Quantity</th>
+            <th>TotalAmount</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@ViewBag.UserID</td>
+            <td>@ViewBag.ProductID</td>
+            <td>@ViewBag.TransactionDate</td>
+            <td>1</td> <!-- Assuming quantity is always 1 -->
+            <td>@ViewBag.Price</td>
+        </tr>
+    </tbody>
+</table>

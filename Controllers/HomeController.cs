@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using ST10258400_Erin_CLDV_POE.Models;
 using System.Diagnostics;
+using System.Data.SqlClient;
 
 namespace ST10258400_Erin_CLDV_POE.Controllers
 {
@@ -14,11 +14,6 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         public IActionResult AboutUs()
         {
             return View();
@@ -27,29 +22,11 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         {
             return View();
         }
-     
-        public IActionResult Basket()
+        public IActionResult Index()
         {
             return View();
         }
-        public IActionResult Wishlist()
-        {
-            return View();
-        }
-        public IActionResult Notification()
-        {
-            return View();
-        }
-        public IActionResult PaymentCheckout()
-        {
-            return View();
-        }
-      
-      public IActionResult LadingLofingSignUp()
-        {
-            return View();
-        }
-        public IActionResult Orders()
+        public IActionResult LandingLofingSignUp()
         {
             return View();
         }
@@ -57,17 +34,63 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         {
             return View();
         }
-        public IActionResult MyWork()
+
+        public IActionResult Notification()
         {
-            var products = ProductTable.GetAllProducts();
-            ViewData["Products"] = products;
-            ViewData["userID"] = 123; // Replace with actual user ID logic
+            return View();
+        }
+
+        public IActionResult PaymentCheckout()
+        {
+            return View();
+        }
+        public IActionResult TransactionDetails()
+        {
+
+            return View();
+        }
+        public IActionResult Wishlist()
+        {
             return View();
         }
         public IActionResult insert()
         {
             return View();
         }
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+        public IActionResult MyWork(int userId)
+        {
+            var products = ProductTable.GetAllProducts();
+
+            ViewData["Products"] = products;
+            ViewData["UserID"] = userId;
+
+            return View();
+        }
+
+
+        public IActionResult LadingLofingSignUp()
+        {
+            return View();
+        }
+
+       /* public IActionResult Orders()
+        {
+            var orders = Transactions.GetAllOrders();
+            ViewData["Orders"] = orders;
+            return View();
+        }*/
+
+
+        public IActionResult Insert()
+        {
+            return View();
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

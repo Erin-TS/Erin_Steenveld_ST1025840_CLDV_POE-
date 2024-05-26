@@ -16,6 +16,31 @@ namespace ST10258400_Erin_CLDV_POE.Models
         public string ImagePath { get; set; }
         public string Category { get; set; }
 
+        public static ProductTable GetProductById(int productId)
+        {
+            using (var connection = new SqlConnection(ConString))
+            {
+                connection.Open();
+                var command = new SqlCommand("SELECT * FROM Products WHERE ProductId = @ProductId", connection);
+                command.Parameters.AddWithValue("@ProductId", productId);
+                var reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new ProductTable
+                    {
+                        ProductID = (int)reader["ProductId"],
+                        ProductName = reader["ProductName"].ToString(),
+                        Description = reader["Description"].ToString(),
+                        Price = (decimal)reader["Price"],
+                        QuantityInStock = (int)reader["QuantityInStock"],
+                        ImagePath = reader["ImagePath"].ToString(),
+                        Category = reader["Category"].ToString()
+                    };
+                }
+                return null;
+            }
+        }
+
         public int insert_product(ProductTable p)
         {
             try

@@ -1,6 +1,4 @@
-﻿@using ST10258400_Erin_CLDV_POE.Models
-
-@model int
+﻿@model List<ProductTable>
 
 @{
     ViewData["Title"] = "My Work";
@@ -9,35 +7,30 @@
 }
 
 <div class="box6">
-    <h1 class="header-About">
-        My Work
-    </h1>
+    <h1 class="header-About">My Work</h1>
     <p>Explore the creative works of talented artisans from around the world.</p>
     <div class="my-work-container">
-        
-            @for (int i = 0; i < products.Count; i += 3)
-            {
+        @for (int i = 0; i < products.Count; i += 3)
+        {
             <div class="work-grid">
-                    @for (int j = i; j < Math.Min(i + 3, products.Count); j++)
-                    {
-                        <div class="work-item">
-                            <img src="~/@products[j].ImagePath" alt="@products[j].ProductName">
-                            <h4>@products[j].ProductName</h4>
-                            <p>Item Description: @products[j].Description</p>
-                            <p>Category: @products[j].Category</p>
-                            <p>Price: R @products[j].Price</p>
-                        <form asp-controller="MyWork" asp-action="AddToCart" method="post">
-                            <input type="hidden" name="productId" value="@products[j].ProductID" />
-                            <input type="hidden" name="productName" value="@products[j].ProductName" />
-                            <input type="hidden" name="Price" value="@products[j].Price" />
-                            <input type="number" name="quantity" value="1" /> 
-                            <button type="submit">Add to Cart</button>
-                            </form>
-                        </div>
-                    }
-                </div>
-            }
-        
+                @for (int j = i; j < Math.Min(i + 3, products.Count); j++)
+                {
+                    <div class="work-item">
+                        <img src="~/@products[j].ImagePath" alt="@products[j].ProductName">
+                        <h4>@products[j].ProductName</h4>
+                        <p>Item Description: @products[j].Description</p>
+                        <p>Category: @products[j].Category</p>
+                        <p>Price: R @products[j].Price</p>
+                        <form asp-controller="Transaction" asp-action="AddToBasket" method="post">
+                            <input type="hidden" name="userID" value="@userId" />
+                            <input type="hidden" name="productID" value="@products[j].ProductID" />
+                            <input type="hidden" name="price" value="@products[j].Price" />
+                            <button type="submit">Purchase Now</button>
+                        </form>
+                    </div>
+                }
+            </div>
+        }
     </div>
-    <h3 class="header-coming-soon">More artisans and thier works coming soon!</h3>
+    <h3 class="header-coming-soon">More artisans and their works coming soon!</h3>
 </div>

@@ -5,28 +5,37 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
 {
     public class UserController : Controller
     {
-        public UserTable usrtbl = new UserTable();
+        private readonly UserTable _userTable;
+
+
+        public UserController()
+        {
+            _userTable = new UserTable();
+        }
+
 
 
         [HttpPost]
-        public ActionResult Privacy(UserTable Users)
+        public ActionResult SignUp(UserTable user)
         {
-            var result = usrtbl.insert_User(Users);
+            // Perform validation
+            if (!ModelState.IsValid)
+            {
+                // Return to the sign-up view with validation errors
+                return View(user);
+            }
+
+            // Insert the user into the database
+            var result = _userTable.insert_User(user);
+
+            // Redirect to the appropriate action after sign-up
             return RedirectToAction("MyWork", "Home");
         }
 
-
         [HttpGet]
-        public ActionResult Privacy()
-        {
-            return View(usrtbl);
-        }
-
         public IActionResult SignUp()
         {
-            return View(); // This will make it visable on the webpage 
+            return View(); // Render the sign-up form
         }
-
     }
 }
-
