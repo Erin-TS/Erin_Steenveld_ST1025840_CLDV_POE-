@@ -1,16 +1,15 @@
 ﻿@{
     ViewData["Title"] = "insert";
 }
-
-<h1>Insert Products</h1>
+<div class="box1">
+    <h1 class="header-About">Insert Products</h1>
 <p>
     Please enter below the details of a product to add to the website.
 </p>
 
 <body>
     <form action="insert" method="post">
-        <p>Insert new product</p>
-        <input type="text" name="ProductName" placeholder="ProductName" required>
+               <input type="text" name="ProductName" placeholder="ProductName" required>
         <input type="number" name="Price" placeholder="Price" required>
         <input type="text" name="Description" placeholder="Description" required>
         <input type="text" name="QuantityInStock" placeholder="Quantity In Stock" required>
@@ -19,3 +18,4 @@
         <button type="submit">Insert</button>
     </form>
 </body>
+</div>

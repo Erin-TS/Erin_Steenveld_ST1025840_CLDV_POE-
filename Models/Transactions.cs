@@ -9,18 +9,19 @@ public class Transactions
     public static SqlConnection Con = new(_conString);
 
     public int TransactionId { get; set; }
-    public int UserId { get; set; }
+    public int UserID { get; set; }
     public int ProductId { get; set; }
     public DateTime TransactionDate { get; set; }
     public int Quantity { get; set; }
     public decimal TotalAmount { get; set; }
+    public string ProductName { get; set; }
 
 
-    // Retrieve orders
+    // Method to retrieve all orders
     public static List<Transactions> GetAllOrders()
     {
         var transactions = new List<Transactions>();
-
+        var conString = "YourConnectionStringHere";
         using var con = new SqlConnection(_conString);
         const string sql = "SELECT * FROM Transactions";
         var cmd = new SqlCommand(sql, con);
@@ -29,17 +30,21 @@ public class Transactions
         var rdr = cmd.ExecuteReader();
         while (rdr.Read())
         {
+            Console.WriteLine($"UserID from database: {rdr["UserID"]}");
+
             var transaction = new Transactions
             {
                 TransactionId = Convert.ToInt32(rdr["TransactionID"]),
-                UserId = Convert.ToInt32(rdr["UserID"]),
+                UserID = Convert.ToInt32(rdr["UserID"]),
                 ProductId = Convert.ToInt32(rdr["ProductID"]),
                 TransactionDate = Convert.ToDateTime(rdr["TransactionDate"]),
                 Quantity = Convert.ToInt32(rdr["Quantity"]),
-                TotalAmount = Convert.ToDecimal(rdr["TotalAmount"])
+                TotalAmount = Convert.ToDecimal(rdr["TotalAmount"]),
+                ProductName = rdr["ProductName"].ToString()
             };
             transactions.Add(transaction);
         }
+
 
         return transactions;
     }

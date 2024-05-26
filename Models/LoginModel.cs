@@ -9,9 +9,9 @@ namespace ST10258400_Erin_CLDV_POE.Models
 
         public static int SelectUser(string Email, string FirstName)
         {
-            var userId = -1; // Default value if user is not found
+            var UserID = -1; // Default value if user is not found
             using var con = new SqlConnection(ConString);
-            const string sql = "SELECT userID FROM Users WHERE Email = @Email AND FirstName = @FirstName";
+            const string sql = "SELECT UserID FROM Users WHERE Email = @Email AND FirstName = @FirstName";
             var cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@Email", Email);
             cmd.Parameters.AddWithValue("@FirstName", FirstName);
@@ -19,7 +19,7 @@ namespace ST10258400_Erin_CLDV_POE.Models
             {
                 con.Open();
                 var result = cmd.ExecuteScalar();
-                if (result != null && result != DBNull.Value) userId = Convert.ToInt32(result);
+                if (result != null && result != DBNull.Value) UserID = Convert.ToInt32(result);
             }
             catch (Exception ex)
             {
@@ -28,7 +28,7 @@ namespace ST10258400_Erin_CLDV_POE.Models
                 throw ex;
             }
 
-            return userId;
+            return UserID;
         }
     }
 }

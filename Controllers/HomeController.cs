@@ -62,15 +62,14 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         {
             return View();
         }
-        public IActionResult MyWork(int userId)
+        public IActionResult MyWork(int UserID)
         {
             var products = ProductTable.GetAllProducts();
-
             ViewData["Products"] = products;
-            ViewData["UserID"] = userId;
-
+            ViewData["UserID"] = UserID;
             return View();
         }
+
         public IActionResult Orders()
         {
             var orders = Transactions.GetAllOrders();

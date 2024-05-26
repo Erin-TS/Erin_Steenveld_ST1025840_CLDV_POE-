@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "My Work";
-    var userId = ViewData["userID"];
+    var UserID = ViewData["UserID"];
     var products = ViewData["Products"] as List<ProductTable>;
 }
 
@@ -22,9 +22,10 @@
                         <p>Category: @products[j].Category</p>
                         <p>Price: R @products[j].Price</p>
                         <form asp-controller="Transaction" asp-action="PurchaseNow" method="post">
-                            <input type="hidden" name="userId" value="@userId" />
+                            <input type="hidden" name="UserID" value="@UserID" />
                             <input type="hidden" name="productId" value="@products[j].ProductID" />
                             <input type="hidden" name="price" value="@products[j].Price" />
+                            <input type="hidden" name="ProductName" value="@products[j].ProductName" />
                             <button type="submit">Purchase Now</button>
                         </form>
 

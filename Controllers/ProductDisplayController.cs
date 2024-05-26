@@ -7,7 +7,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
     {
 
 
-        public IActionResult Index(int userID)
+        public IActionResult Index(int UserID)
         {
             // Get all products from the database
             List<ProductDisplayModel> products = GetProductsFromDatabase();
@@ -16,7 +16,7 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
             ViewBag.MyWork = products;
 
             // Pass userID to the view (if needed)
-            ViewData["userID"] = userID;
+            ViewData["UserID"] = UserID;
 
             return View();
         }

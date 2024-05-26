@@ -14,21 +14,22 @@ public class TransactionController : Controller
     }
 
     [HttpPost]
-    public ActionResult PurchaseNow(int userId, int productId, decimal price)
+    public ActionResult PurchaseNow(int UserID, int productId, string ProductName,decimal price)
     {
         try
         {
             var conString = "Server=tcp:cloud-dev-poe.database.windows.net,1433;Initial Catalog=cloud-dev-poe-sql-database;Persist Security Info=False;User ID=Erin;Password=J@ckEr!n2003;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             using (var con = new SqlConnection(conString))
             {
-                var sql = "INSERT INTO Transactions (UserID, ProductID, TransactionDate, Quantity, TotalAmount) VALUES (@UserID, @ProductID, @TransactionDate, @Quantity, @TotalAmount)";
+                var sql = "INSERT INTO Transactions (UserID, ProductID, TransactionDate, Quantity, TotalAmount,ProductName) VALUES (@UserID, @ProductID, @TransactionDate, @Quantity, @TotalAmount,@ProductName)";
                 var cmd = new SqlCommand(sql, con);
 
-                cmd.Parameters.AddWithValue("@UserID", userId);
+                cmd.Parameters.AddWithValue("@UserID", UserID);
                 cmd.Parameters.AddWithValue("@ProductID", productId);
                 cmd.Parameters.AddWithValue("@TransactionDate", DateTime.Now);
                 cmd.Parameters.AddWithValue("@Quantity", 1);
                 cmd.Parameters.AddWithValue("@TotalAmount", price);
+                cmd.Parameters.AddWithValue("@ProductName", ProductName);
 
                 con.Open();
                 var rowsAffected = cmd.ExecuteNonQuery();

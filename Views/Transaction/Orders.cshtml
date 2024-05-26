@@ -3,22 +3,21 @@
 @{
     ViewData["Title"] = "Orders";
 }
-
+<div class="box1">
 <div class="text-center">
-    <h1>Orders</h1>
+        <h1 class="header-About">Order History</h1>
     <p>
-        Please ensure that orders have been made prior to viewing this page. If the below
-        table is empty, it is highly probable that no orders have yet to be made.
+        Orders must have been made to view history
     </p>
 </div>
 
-<h2>Order List:</h2>
-<table style="color: white;" class="table">
+<table  class="table">
     <thead>
         <tr>
             <th>TransactionID</th>
             <th>UserID</th>
             <th>ProductID</th>
+            <th>ProductName</th>
             <th>TransactionDate</th>
             <th>Quantity</th>
             <th>TotalAmount</th>
@@ -29,8 +28,9 @@
         {
             <tr>
                 <td>@order.TransactionId</td>
-                <td>@order.UserId</td>
+                <td>@order.UserID</td>
                 <td>@order.ProductId</td>
+                <td>@order.ProductName</td>
                 <td>@order.TransactionDate</td>
                 <td>@order.Quantity</td>
                 <td>@order.TotalAmount</td>
@@ -38,3 +38,4 @@
         }
     </tbody>
 </table>
+</div>

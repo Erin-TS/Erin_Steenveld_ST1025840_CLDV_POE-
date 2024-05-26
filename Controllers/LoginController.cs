@@ -28,18 +28,12 @@ namespace ST10258400_Erin_CLDV_POE.Controllers
         public IActionResult Privacy(string email, string name)
         {
             var loginModel = new LoginModel();
-
-
-            var userID = LoginModel.SelectUser(email, name);
-
-
-            if (userID != -1)
+            var UserID = LoginModel.SelectUser(email, name);
+            if (UserID != -1)
             {
-                return RedirectToAction("MyWork", "Home", new { userID = userID });
+                return RedirectToAction("MyWork", "Home", new { UserID = UserID });
             }
             return View("Index");
-
         }
-
     }
 }

@@ -19,7 +19,7 @@ namespace ST10258400_Erin_CLDV_POE.Models
             try
             {
                 const string sql = "INSERT INTO [Users] (UserID,FirstName, LastName, Email) VALUES (@UserID,@FirstName, @LastName, @Email)";
-                //const string sql = "INSERT INTO userTable (userID, FirstName, LastName, userEmail) VALUES (@userID, @FirstName, @LastName, @userEmail)";
+                
                 var cmd = new SqlCommand(sql, Con);
                 var random = new Random();
                 var randomNumber = random.Next(1, 1001);
